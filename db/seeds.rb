@@ -6,12 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-u = User.new
-u.email = "admin@test.com"           # 可以改成自己的 email
+User.create(email: "admin@test.com",
+          password: "12345678",
+          password_confirmation: "12345678",
+          is_admin: true)
 
-u.password = "12345678"              # 最少要八碼
-
-u.password_confirmation = "12345678" # 最少要八碼
-
-u.is_admin = true
-u.save
+1.upto(5) do |i|
+  p = Product.new(title: "Cake #{i}", description: "cake #{i}", quantity: 100, price: 200)
+  File.open(File.join(Rails.root, "db/files/#{i}.jpg")) { |f| p.build_photo.image = f }
+  p.save
+end
