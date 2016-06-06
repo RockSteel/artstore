@@ -3,8 +3,10 @@ class Cart < ActiveRecord::Base
   has_many :items, through: :cart_items, source: :product
 
   def add_product_to_cart(product)
-    ci = self.cart_items.build
-    ci.product = product
-    ci.save
+    self.items << product
+  end
+
+  def total_price
+    self.items.reduce(0) { |acc, p| acc + p.price }
   end
 end
