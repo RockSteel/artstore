@@ -13,4 +13,8 @@ class Cart < ActiveRecord::Base
   def clean!
     self.cart_items.destroy_all
   end
+
+  def find_cart_item(product)
+    self.cart_items.find_by(product_id: product)
+  end
 end
