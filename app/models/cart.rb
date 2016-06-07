@@ -9,4 +9,8 @@ class Cart < ActiveRecord::Base
   def total_price
     self.items.reduce(0) { |acc, p| acc + p.price }
   end
+
+  def clean!
+    self.cart_items.destroy_all
+  end
 end
