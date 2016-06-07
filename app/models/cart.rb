@@ -7,7 +7,7 @@ class Cart < ActiveRecord::Base
   end
 
   def total_price
-    self.items.reduce(0) { |acc, p| acc + p.price }
+    self.cart_items.reduce(0) { |acc, item| acc + item.product.price * item.quantity }
   end
 
   def clean!
