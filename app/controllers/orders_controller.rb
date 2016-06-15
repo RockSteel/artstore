@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :pay2go_cc_notify
+
+  protect_from_forgery except: :pay2go_cc_notify
 
   def create
     @order = current_user.orders.build(order_params)
