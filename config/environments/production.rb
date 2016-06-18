@@ -78,6 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'still-waters-16687.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:           587,
+    address:        "smtp.mailgun.org",
+    user_name:      ENV["mailgun_user"],
+    password:       ENV["mailgun_secret"],
+    domain:         "Sandbox05b3d908d60f4433bc4869bdb40fca2e.mailgun.org ",
+    authentication: :plain,
+  }
 
   config.after_initialize do
     #Pay2go.integration_mode = :production
