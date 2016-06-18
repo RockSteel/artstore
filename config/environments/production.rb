@@ -87,6 +87,7 @@ Rails.application.configure do
     domain:         "Sandbox05b3d908d60f4433bc4869bdb40fca2e.mailgun.org ",
     authentication: :plain,
   }
+  config.action_mailer.raise_delivery_errors = true
 
   config.after_initialize do
     #Pay2go.integration_mode = :production
