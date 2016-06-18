@@ -31,6 +31,7 @@ gem 'aasm'
 gem 'roadie', '2.4.3'
 gem 'pay2go'
 gem 'figaro'
+gem 'fog'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
